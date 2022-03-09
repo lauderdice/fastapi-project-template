@@ -18,7 +18,7 @@ router = APIRouter(
 )
 
 
-@router.get("", response_model=SampleResponse,
+@router.post("", response_model=SampleResponse,
             responses={status.HTTP_400_BAD_REQUEST: {"model": ErrorResponse}})
 def get_sample_response(request_body: SampleRequest, request_key: str = Depends(api_key_header)):
     if not is_apikey_valid(request_key):
